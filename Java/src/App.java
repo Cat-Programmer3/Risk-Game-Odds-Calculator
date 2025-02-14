@@ -8,8 +8,6 @@ public class App {
     private static Player Defender = new Player();
     private int ATT; //Attacking Troops (total)
     private int DTT; //Defending Troops (total)
-    //private int ATARM; //Attacking Troops
-    //private int DTARM; //Defending Troops
     private int ATL = 0; //Attacking Troops left AFTER win
     private int DTL = 0; //Defender Troops left AFTER win
     private int NOR = 10000; //Number of runs
@@ -31,6 +29,7 @@ public class App {
         Defender.setDieLen(2);
         Attacker.intent('a');
         Defender.intent('d');
+
         System.out.println("Attackers: ");
         
         String num = getNum.nextLine();
@@ -39,7 +38,12 @@ public class App {
         num = getNum.nextLine();
         DTT = Integer.parseInt(num);
 
+        
+
         runBattle();
+
+        
+        for(int i = 0; i < 5; i++) System.out.println(); //Create blank lines
 
         System.out.println("Attackers: " + ATT);
         System.out.println("Defenders: " + DTT);
@@ -61,7 +65,7 @@ public class App {
     }
 
     public void runBattle(){
-        System.out.println("Running Battles");
+        //System.out.println("Running Battles");
         if(ATT <= 0 || DTT <= 0)
             return;
 
@@ -71,7 +75,7 @@ public class App {
         ATL = 0;
         DTL = 0;
 
-        System.out.println("Starting Battle");
+        //System.out.println("Starting Battle");
 
         for (int i = 0; i < NOR; i++){
             blitz();
