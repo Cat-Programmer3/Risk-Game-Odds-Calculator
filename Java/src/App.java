@@ -80,29 +80,29 @@ public class App {
         for (int i = 0; i < NOR; i++){
             blitz();
             if(Attacker.troops() > 0){
-                ATL += Attacker.troops();
+                ATL += Attacker.troops(); // Add remaining attacker troops (For average)
             }
 
             if(Defender.troops() > 0){
-                DTL += Defender.troops();
+                DTL += Defender.troops(); // Add remaining defender troops (For average)
             }
 
-            Attacker.troops(ATT);
+            Attacker.troops(ATT); // Reset the starting amount of troops (For next simulation)
             Defender.troops(DTT);
         }
 
         if(Attacker.getWins() > 0)
-            ATLO = (int)Math.round(ATL / Attacker.getWins());
+            ATLO = (int)Math.round(ATL / Attacker.getWins()); // Get the average amount of troops remaining
         else 
             ATLO = 0;
 
         
         if(Defender.getWins() > 0)
-            DTLO = (int)Math.round(DTL / Defender.getWins());
+            DTLO = (int)Math.round(DTL / Defender.getWins()); // Get the average amount of troops remaining
         else 
             DTLO = 0;
 
-        win = (double)Attacker.getWins() / ((double)Defender.getWins() + (double)Attacker.getWins());
+        win = (double)Attacker.getWins() / ((double)Defender.getWins() + (double)Attacker.getWins()); // Win percentage
         win = (int)Math.round(win * 10000) / 100.00;
     }
 
@@ -120,8 +120,8 @@ public class App {
     }
 
     public void fightOnce(){
-        int at = numToFight(Attacker);
-        int dt = numToFight(Defender);
+        int at = numToFight(Attacker); // The number to fight during this round (0-3)
+        int dt = numToFight(Defender); // The number to fight during this round (0-2)
 
         if(at <= 0 || dt <= 0)
             return;
@@ -129,7 +129,7 @@ public class App {
         Defender.rollDice(dt);
         Attacker.rollDice(at);
         
-        Arrays.sort(Attacker.diceroll, Collections.reverseOrder());
+        Arrays.sort(Attacker.diceroll, Collections.reverseOrder()); // Sort the dice rolls highest to lowest for comparisions.
         Arrays.sort(Defender.diceroll, Collections.reverseOrder());
         
 
