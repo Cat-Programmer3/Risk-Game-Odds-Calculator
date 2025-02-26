@@ -15,9 +15,9 @@ public class App {
     private int ATLO = 0; //Average of Attacking troops left over
     private int DTLO = 0; //Average of Defending troops left over
 
-    private double win;
+    private double win; //Win Percentage
 
-    Scanner getNum = new Scanner(System.in);
+    Scanner getNum = new Scanner(System.in); //Object for recieving input
 
     public static void main(String[] args) throws Exception {
         App game = new App();
@@ -65,8 +65,8 @@ public class App {
     }
 
     public void runBattle(){
-        //System.out.println("Running Battles");
-        if(ATT <= 0 || DTT <= 0)
+        
+        if(ATT <= 0 || DTT <= 0) // Make Sure that there isn't less troops
             return;
 
         Attacker.troops(ATT);
@@ -75,7 +75,7 @@ public class App {
         ATL = 0;
         DTL = 0;
 
-        //System.out.println("Starting Battle");
+        
 
         for (int i = 0; i < NOR; i++){
             blitz();
